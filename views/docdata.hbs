@@ -1,0 +1,20 @@
+<h3>Result Data</h3>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{#each datas}}
+      <tr>
+        <td>{{this.title}}</td>
+        <td><img style="width: 100px; height: 100px; border-radius: 50%;" src="{{this.image}}"/></td>
+        <td>{{this.email}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>

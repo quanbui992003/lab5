@@ -14,7 +14,12 @@
         <td>{{this.title}}</td>
         <td><img style="width: 100px; height: 100px; border-radius: 50%;" src="{{this.image}}"/></td>
         <td>{{this.email}}</td>
+         <td>
+                    <a href="/data/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+                    <a href="/data/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                </td>
       </tr>
     {{/each}}
+    
     </tbody>
   </table>

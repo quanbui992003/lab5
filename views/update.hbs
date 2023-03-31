@@ -1,6 +1,5 @@
-<h3 style="style=" margin-top: 100px;"">Inser Data</h3>
-<form action="/data/adddata" method="POST">
-    <div class="form-group">
+<form action="/data/update/{{user._id}}?_method=PUT" method="POST" autocomplete="off">
+<div class="form-group">
         <label for="usr">Title:</label>
         <input type="text" class="form-control" id="title" name="title" value="{{data.title}}">
     </div>
@@ -10,7 +9,7 @@
     </div>
     <div class="form-group">
         <label for="pwd">Link image:</label>
-        <input type="text" class="form-control" id="image" name="image" value="{{data.image}}">
+        <input type="text" class="form-control" id="image" name="image" value="{{data.image}}" >
     </div>
     <input type="submit" value="Save">
 </form>

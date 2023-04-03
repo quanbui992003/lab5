@@ -1,25 +1,40 @@
 <h3>Result Data</h3>
 
 <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-        {{#each datas}}
-      <tr>
-        <td>{{this.title}}</td>
-        <td><img style="width: 100px; height: 100px; border-radius: 50%;" src="{{this.image}}"/></td>
-        <td>{{this.email}}</td>
-         <td>
-                    <a href="/data/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                    <a href="/data/delete/{{this._id}}" class="btn btn-danger">Delete</a>
-                </td>
-      </tr>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each datas}}
+    <tr>
+      <td>{{sum @index 1}}</td>
+      <td>{{this.namesp}}</td>
+      <td>{{this.gia}}</td>
+      <td>{{this.soluong}}</td>
+      <td>
+         <a href="/data/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+         <a href="#" class="btn btn-danger delete-btn" data-id="{{this._id}}">Delete</a>
+      </td>
+    </tr>
     {{/each}}
-    
-    </tbody>
-  </table>
+  </tbody>
+</table>
+ <a href="/data/cmhsp/{{this._id}}" class="btn btn-primary">add sp</a>
+<script>
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+  deleteButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    event.preventDefault();
+    const id = button.dataset.id;
+    const result = confirm('Bạn có chắc muốn xóa dữ liệu này không?');
+    if (result) {
+      window.location.href = "/data/delete/"+id;
+    }
+  });
+});
+</script>

@@ -2,35 +2,38 @@ const express = require('express');
 const baiTap = require('../model/bt')
 const app = express();
 
-app.get("/",(req , res) =>{
+app.get("/", (req, res) => {
     res.render("nhapdata")
 })
-
-app.put("/update/:id", (req, res) =>{
+app.get("/cmhsp", (req, res) => {
+    res.render("nhapdata")
+})
+app.put("/capnhat/:id", (req, res) => {
     console.log(req.params.id)
     console.log(req.body.name)
-    baiTap.updateOne({_id:req.params.id}, req.body)
-    .then(() => res.redirect("/data/getAllData"))
-    .catch(err => console.error(err))
+    baiTap.updateOne({ _id: req.params.id }, req.body)
+        .then(() => res.redirect("/data/getAllData"))
+        .catch(err => console.error(err))
 })
-app.post("/adddata" , async (req  , res) =>{
+app.post("/adddata", async (req, res) => {
     try {
         const data = new baiTap(req.body);
-        if(data){
+        if (data) {
             await data.save()
             res.redirect("/data/getAllData")
-        }else{
+        } else {
             console.log("Error saving")
         }
     } catch (error) {
         console.log(error)
     }
-   
-})  
+
+})
 
 app.get("/delete/:id", async (req, res) => {
     try {
         const users = await baiTap.findByIdAndDelete(req.params.id, req.body)
+        
         if (!users) {
             res.status(404).send("no items found")
         } else {
@@ -42,15 +45,15 @@ app.get("/delete/:id", async (req, res) => {
 })
 
 
-app.get("/getAllData" , async (req  ,res) =>{
+app.get("/getAllData", async (req, res) => {
     try {
-        await baiTap.find({}) 
-        .then(datas =>{
-            res.render("docdata",{
-                datas: datas.map(data => data.toJSON())
+        await baiTap.find({})
+            .then(datas => {
+                res.render("docdata", {
+                    datas: datas.map(data => data.toJSON())
+                })
+
             })
-          
-        })
     } catch (error) {
         res.status(500).console(error)
     }

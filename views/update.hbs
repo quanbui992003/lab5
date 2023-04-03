@@ -1,15 +1,18 @@
-<form action="/data/update/{{user._id}}?_method=PUT" method="POST" autocomplete="off">
+<form action="/data/capnhat/{{user._id}}?_method=PUT" method="POST" autocomplete="off">
+
 <div class="form-group">
-        <label for="usr">Title:</label>
-        <input type="text" class="form-control" id="title" name="title" value="{{data.title}}">
+        <label for="namesp">Title:</label>
+        <input type="namesp" class="form-control" id="namesp" name="namesp" value="{{user.namesp}}" required>
     </div>
     <div class="form-group">
-        <label for="usr">Email:</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{data.email}}">
+        <label for="gia">gia:</label>
+        <input type="gia" class="form-control" id="gia" name="gia" value="{{user.gia}}" required>
     </div>
     <div class="form-group">
-        <label for="pwd">Link image:</label>
-        <input type="text" class="form-control" id="image" name="image" value="{{data.image}}" >
+        <label for="soluong">Link soluong:</label>
+        <input type="soluong" class="form-control" id="soluong" name="soluong" value="{{user.soluong}}" required>
     </div>
     <input type="submit" value="Save">
+
 </form>
+ 

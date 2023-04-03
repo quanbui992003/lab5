@@ -20,8 +20,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/lab6')
   app.use(methods("_method"))
 
   app.engine('.hbs',handlebars.engine({
-    extname:"hbs"
-  }) );
+    extname:"hbs",helpers:{
+      sum:(a,b)=>a+b,
+    }
+  }) 
+  
+  
+  );
 
  
  
